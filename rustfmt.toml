@@ -1,0 +1,5 @@
+max_width = 100
+edition = "2021"
+# Uncomment on nightly toolchain for import grouping:
+# imports_granularity = "Crate"
+# group_imports = "StdExternalCrate"

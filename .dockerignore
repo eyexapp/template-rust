@@ -1,0 +1,15 @@
+/target
+.git
+.github
+.vscode
+.idea
+tests/
+*.md
+.env
+.env.*
+!.env.example
+.editorconfig
+.gitignore
+clippy.toml
+rustfmt.toml
+Makefile

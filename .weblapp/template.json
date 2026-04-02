@@ -1,0 +1,45 @@
+{
+  "name": "rust",
+  "displayName": "Rust Axum API",
+  "description": "Rust backend with Axum web framework, Tokio async runtime, SQLx PostgreSQL, and Tower middleware",
+  "category": "backend",
+  "language": "rust",
+  "framework": "axum",
+  "stack": ["rust", "axum", "tokio", "sqlx", "postgresql", "tower", "serde", "tracing"],
+  "features": ["async-api", "type-safety", "database", "middleware", "error-handling", "logging"],
+  "commands": {
+    "dev": "cargo run",
+    "build": "cargo build --release",
+    "test": "cargo test",
+    "lint": "cargo clippy"
+  },
+  "packageManager": "cargo",
+  "ci": {
+    "workflowTemplate": "rust",
+    "runner": "ubuntu-latest",
+    "runtime": {
+      "name": "rust",
+      "version": "stable",
+      "setup": "dtolnay/rust-toolchain@stable",
+      "cache": "cargo"
+    },
+    "services": {
+      "postgres": {
+        "image": "postgres:16",
+        "env": {
+          "POSTGRES_USER": "test",
+          "POSTGRES_PASSWORD": "test",
+          "POSTGRES_DB": "test_db"
+        },
+        "ports": ["5432:5432"],
+        "options": "--health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5"
+      }
+    },
+    "steps": {
+      "install": null,
+      "build": "cargo build",
+      "test": "cargo test",
+      "lint": "cargo clippy -- -D warnings"
+    }
+  }
+}

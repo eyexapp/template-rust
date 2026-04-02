@@ -1,0 +1,5 @@
+[alias]
+dev = "run"
+t = "test"
+lint = "clippy -- -D warnings"
+fmt-check = "fmt -- --check"
